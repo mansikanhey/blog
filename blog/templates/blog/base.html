@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+    <head>
+        <title>@मनोज कान्हे 'शिवांश'</title>
+        <link rel="stylesheet" type="text/css" href= "{% static 'blog/style.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+        <meta name="google" content="notranslate" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+
+    <body>
+        <style>
+            body {
+            font-family: "Roboto", sans-serif;
+            font-size: 17px;
+            background-image: linear-gradient(to right, rgba(250, 222, 209, 0), rgb(243, 152, 109));
+            
+            
+
+        }
+        .shadow {
+            box-shadow: 0 4px 2px -2px rgba(8, 11, 196, 0.1);
+        }
+        .btn-danger {
+            color: #fff;
+            background-color: #f00000;
+            border-color: #dc281e;
+            padding-bottom: 20vw;
+            padding-top: 0.5vw;
+        }
+        .masthead {
+            
+            height: auto;
+            color: rgb(29, 28, 28);
+            padding-bottom: 15px;
+           
+            padding-top: 10px;
+            color: black;
+            padding-top: 1vw;
+             }
+
+             a:hover {
+                color: red;
+            }
+        
+    </style>
+
+        <!-- Navigation -->
+        <h5  class="font-weight-bold" style="margin-left: 1.8em; margin-top:2em; margin-top:-1em;"></h5>
+        <nav class="navbar navbar-expand-sm bg-secondary navbar-dark " id="mainNav">
+            <div class="container-fluid">
+                
+                <a class="navbar-brand font-weight-bold" href="{% url 'blog:index' %}" style="color: black; font-size: 2.1vh;">भारतीय राष्ट्रवादी मंच</a>
+                
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Bharat-mata.png/220px-Bharat-mata.png" height="110vh" width="90vw" style="max-resolution: top 1vw; ;">
+                    <a class="navbar-brand font-weight-bold" href="{% url 'blog:index' %}" style="color: black; font-size: 2.1vh;">मनोज कान्हे 'शिवांश'</a>
+              
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold " style="color: black; font-size: 3vh;" href="{% url 'blog:about' %}">About</a>
+                        </li>
+                        
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold"style="color: black; font-size: 3vh;" href="{% url 'blog:contact' %}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+
+
+ <!-- Footer -->
+        <br><br>&nbsp;
+
+        <footer class="py-3 bg-grey">
+
+            <hr>
+            <p class="m-0 text-dark text-center ">Copyright &copy; @मनोज कान्हे 'शिवांश' </p>
+        </footer>
+    
+    </body>
+</html>

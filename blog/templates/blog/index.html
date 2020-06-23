@@ -1,0 +1,66 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<style>
+    body {
+        font-family: cursive;
+        font-size: 1vw;
+        background-image: linear-gradient(to right, rgba(185, 231, 231, 0), rgb(248, 138, 87));
+    }
+    
+    .head_text {
+        color: rgb(178, 235, 245);
+    }
+    
+    .card {
+        box-shadow: 0 16px 48px #080808;
+    }
+</style>
+
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <u><h3 class=" site-heading my-4 mt-3 text-black " style="font-weight: bolder;  text-align:center;  font-size:2.5vh ;color:rgb(92, 83, 8); color: black;"> भारतीय राष्ट्रवादी मंच : देश को समर्पित </h3></u>
+                    
+                     &nbsp
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% for post in post_list %}
+
+            
+            <div class="card mb-4" style=" margin-left: -3vw; font-weight: bolder; background-color:rgb(229, 231, 233); color:rgb(4, 114, 218);">
+                <div class="card-body">
+                    <a href="{% url 'blog:detail' post.id %}"><br>
+                        {% if post.logo %}
+                            <img src="{{ post.logo.url }}" class="img-responsive" height="130vh" width="100vw">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    </a>
+                 
+
+                <!--This .url will make sure that its the file object's path-->
+
+                    <h2 class="card-title">{{ object.title }}</h2>
+                    <p class="card-text text-muted h6" style="font-weight: bolder; color: black; font-size: 2vh;">{{ post.author }} | {{ post.created_on}} </p>
+                    <p class="card-text" style="font-size: 2vh;">{{post.content|slice:":200" }}</p>
+                    <a href="{% url 'blog:detail' post.slug %}" class="btn btn-primary" style="width: 14vw; height: 3vh; font-size: 1.4vh; padding-bottom: 1vh; padding-top: 1vh;">Read More &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{%endblock%}

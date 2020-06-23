@@ -1,0 +1,65 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1>{% block title %} {{ post.title }}  {% endblock title %}</h1>
+                    <a href="{% url 'blog:detail' post.id %}"><br>
+                        {% if post.logo %}
+                            <img src="{{ post.logo.url }}" class="img-responsive" height="200vh" width="150vw">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    </a>
+        <p class=" text-muted" style="font-weight: bolder; color: black;">{{ post.author }} | {{ post.created_on }}</p>
+        <p class="card-text ">{{ post.content | linebreaks }}</p>
+      </div>
+    </div>
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body" style="width: fit-content;">
+
+
+        <!-- comments -->
+        <p>{{ comments.count }} comments</p>
+
+        {% for comment in comments %}
+        <div class="comments" style="padding: 0.5vh;">
+          <p class="font-weight-bold">
+            {{ comment.name }}<br>
+            <span class=" text-muted font-weight-normal">
+              {{ comment.created_on }}
+            </span>
+          </p>
+          {{ comment.body | linebreaks }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert" style="font-size: 3vh;">
+          Your comment is awaiting moderation
+        </div>
+        {% else %}
+        <h3 style="font-size: 4vh;">Leave a comment</h3>
+        <hr style=" border: 0.1vh solid rgb(8, 8, 8);">
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+          <hr style=" border: 0.1vh solid rgb(8, 8, 8);">
+        </form>
+
+        {% endif %}
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+{% endblock content %}
